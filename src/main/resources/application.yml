@@ -4,8 +4,6 @@ spring:
     url: @datasource.url@
     username: @datasource.login@
     password: @datasource.password@
-  redis:
-    password: @datasource.password@
   jooq:
     sql-dialect: Postgres
   liquibase:

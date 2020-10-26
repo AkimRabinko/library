@@ -9,4 +9,5 @@ public class Subscribe {
     long id;
     long userId;
     Set<Long> bookIds;
+    Period period;
 }

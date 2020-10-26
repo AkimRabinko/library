@@ -5,10 +5,10 @@ import lombok.Value;
 import java.util.List;
 
 @Value
-public class BookInfo {
+public class Book {
     long id;
     String isbn;
-    List<String> author;
+    List<String> authors;
     String name;
     String language;
     int pagesCount;

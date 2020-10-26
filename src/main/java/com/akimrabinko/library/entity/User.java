@@ -1,6 +1,5 @@
 package com.akimrabinko.library.entity;
 
-import com.akimrabinko.library.entity.enums.UserRole;
 import lombok.Value;
 
 import java.time.LocalDate;
@@ -12,5 +11,4 @@ public class User {
     String surname;
     String email;
     LocalDate birthday;
-    UserRole userRole;
 }

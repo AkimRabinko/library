@@ -66,6 +66,10 @@
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -73,6 +77,63 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jooq</groupId>
+				<artifactId>jooq-codegen-maven</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<skip>true</skip>
+					<jdbc>
+						<driver>${datasource.driver}</driver>
+						<url>${datasource.url}</url>
+						<user>${datasource.login}</user>
+						<password>${datasource.password}</password>
+					</jdbc>
+					<generator>
+						<generate>
+							<javaTimeTypes>true</javaTimeTypes>
+							<instanceFields>true</instanceFields>
+							<indexes>false</indexes>
+							<javadoc>false</javadoc>
+							<keys>false</keys>
+							<links>false</links>
+							<routines>false</routines>
+							<sequences>false</sequences>
+							<records>false</records>
+							<udts>false</udts>
+							<pojos>false</pojos>
+							<immutablePojos>false</immutablePojos>
+							<interfaces>false</interfaces>
+							<daos>false</daos>
+							<jpaAnnotations>false</jpaAnnotations>
+							<validationAnnotations>false</validationAnnotations>
+							<globalObjectReferences>false</globalObjectReferences>
+							<deprecated>false</deprecated>
+							<generatedAnnotation>false</generatedAnnotation>
+						</generate>
+						<database>
+							<name>org.jooq.meta.postgres.PostgresDatabase</name>
+							<includes>public.*</includes>
+							<excludes>public.databasechangelog | public.databasechangeloglock</excludes>
+							<schemata>
+								<schema>
+									<inputSchema>public</inputSchema>
+								</schema>
+							</schemata>
+						</database>
+						<target>
+							<packageName>com.akimrabinko.library.jooqData</packageName>
+							<directory>src/main/java</directory>
+						</target>
+					</generator>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
