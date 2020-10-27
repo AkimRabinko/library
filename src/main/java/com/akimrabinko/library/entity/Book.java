@@ -8,7 +8,7 @@ import java.util.List;
 public class Book {
     long id;
     String isbn;
-    List<String> authors;
+    String author;
     String name;
     String language;
     int pagesCount;

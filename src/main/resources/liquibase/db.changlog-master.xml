@@ -72,4 +72,13 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="Simplify and make changes" author="Akim">
+        <renameColumn tableName="book" oldColumnName="authors" newColumnName="author"/>
+        <modifyDataType tableName="book" columnName="author" newDataType="character varying (200)"/>
+
+        <addColumn tableName="user">
+            <column name="role" type="character varying (20)"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

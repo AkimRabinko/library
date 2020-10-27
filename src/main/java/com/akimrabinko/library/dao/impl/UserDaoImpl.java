@@ -49,6 +49,7 @@ public class UserDaoImpl implements UserDao {
                 .set(USER.EMAIL, userDto.getEmail())
                 .set(USER.BIRTHDAY, userDto.getBirthday())
                 .set(USER.PASSWORD, userDto.getPassword())
+                .set(USER.ROLE, userDto.getUserRole().name())
                 .execute() > INTEGER_ZERO;
     }
 }

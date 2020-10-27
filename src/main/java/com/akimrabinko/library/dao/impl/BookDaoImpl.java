@@ -31,7 +31,7 @@ public class BookDaoImpl implements BookDao {
     public List<Book> getBooksByAuthor(String author) {
         return dslContext.select()
                 .from(BOOK)
-                .where(BOOK.AUTHORS.contains(new String[]{author}))
+                .where(BOOK.AUTHOR.eq(author))
                 .fetchInto(Book.class);
     }
 
@@ -45,10 +45,9 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public boolean addBook(BookDto bookDto) {
-        String[] authors = (String[]) bookDto.getAuthors().toArray();
         return dslContext.insertInto(BOOK)
                 .set(BOOK.ISBN, bookDto.getIsbn())
-                .set(BOOK.AUTHORS, authors)
+                .set(BOOK.AUTHOR, bookDto.getAuthor())
                 .set(BOOK.NAME, bookDto.getName())
                 .set(BOOK.LANGUAGE, bookDto.getLanguage())
                 .set(BOOK.PAGES_COUNT, bookDto.getPagesCount())

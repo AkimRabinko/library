@@ -26,7 +26,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<Record> {
 
-    private static final long serialVersionUID = 1700153875;
+    private static final long serialVersionUID = 1078899815;
 
     public static final User USER = new User();
 
@@ -46,6 +46,8 @@ public class User extends TableImpl<Record> {
     public final TableField<Record, String> EMAIL = createField(DSL.name("email"), org.jooq.impl.SQLDataType.VARCHAR(200).nullable(false).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     public final TableField<Record, String> PASSWORD = createField(DSL.name("password"), org.jooq.impl.SQLDataType.VARCHAR(200).nullable(false).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+
+    public final TableField<Record, String> ROLE = createField(DSL.name("role"), org.jooq.impl.SQLDataType.VARCHAR(20), this, "");
 
     public User() {
         this(DSL.name("user"), null);

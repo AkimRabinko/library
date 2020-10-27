@@ -9,7 +9,7 @@ import java.util.List;
 @Value
 public class BookDto {
     String isbn;
-    List<String> authors;
+    String author;
     String name;
     String language;
     int pagesCount;
@@ -19,7 +19,7 @@ public class BookDto {
 
     @JsonCreator
     public BookDto(@JsonProperty("isbn") String isbn,
-                   @JsonProperty("authors") List<String> authors,
+                   @JsonProperty("author") String author,
                    @JsonProperty("name") String name,
                    @JsonProperty("language") String language,
                    @JsonProperty("pagesCount") int pagesCount,
@@ -27,7 +27,7 @@ public class BookDto {
                    @JsonProperty("publishingHouse") String publishingHouse,
                    @JsonProperty("shortInfo") String shortInfo) {
         this.isbn = isbn;
-        this.authors = authors;
+        this.author = author;
         this.name = name;
         this.language = language;
         this.pagesCount = pagesCount;
