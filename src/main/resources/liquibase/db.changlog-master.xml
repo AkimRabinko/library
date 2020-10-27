@@ -6,7 +6,7 @@
 
     <changeSet id="Add basic tables" author="Akim">
         <createTable tableName="user">
-            <column name="id" type="serial">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="birthday" type="date"/>
@@ -19,19 +19,22 @@
             <column name="email" type="character varying (200)" defaultValue="">
                 <constraints nullable="false"/>
             </column>
+            <column name="role" type="character varying (20)" defaultValue="">
+                <constraints nullable="false"/>
+            </column>
             <column name="password" type="character varying (200)" defaultValue="">
                 <constraints nullable="false"/>
             </column>
         </createTable>
 
         <createTable tableName="book">
-            <column name="id" type="bigserial">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="isbn" type="character varying (200)">
                 <constraints nullable="false"/>
             </column>
-            <column name="authors" type="text[]">
+            <column name="author" type="character varying (200)">
                 <constraints nullable="false"/>
             </column>
             <column name="name" type="character varying (200)">
@@ -55,7 +58,7 @@
         </createTable>
 
         <createTable tableName="subscribe">
-            <column name="id" type="bigserial">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="user_id" type="integer">
@@ -71,14 +74,5 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-    </changeSet>
-
-    <changeSet id="Simplify and make changes" author="Akim">
-        <renameColumn tableName="book" oldColumnName="authors" newColumnName="author"/>
-        <modifyDataType tableName="book" columnName="author" newDataType="character varying (200)"/>
-
-        <addColumn tableName="user">
-            <column name="role" type="character varying (20)"/>
-        </addColumn>
     </changeSet>
 </databaseChangeLog>

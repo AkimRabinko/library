@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.jooq.Field;
+import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Schema;
@@ -26,7 +27,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<Record> {
 
-    private static final long serialVersionUID = 1078899815;
+    private static final long serialVersionUID = -192692635;
 
     public static final User USER = new User();
 
@@ -35,7 +36,7 @@ public class User extends TableImpl<Record> {
         return Record.class;
     }
 
-    public final TableField<Record, Integer> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<Record, Long> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.BIGINT.nullable(false).identity(true), this, "");
 
     public final TableField<Record, LocalDate> BIRTHDAY = createField(DSL.name("birthday"), org.jooq.impl.SQLDataType.LOCALDATE, this, "");
 
@@ -45,9 +46,9 @@ public class User extends TableImpl<Record> {
 
     public final TableField<Record, String> EMAIL = createField(DSL.name("email"), org.jooq.impl.SQLDataType.VARCHAR(200).nullable(false).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
-    public final TableField<Record, String> PASSWORD = createField(DSL.name("password"), org.jooq.impl.SQLDataType.VARCHAR(200).nullable(false).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<Record, String> ROLE = createField(DSL.name("role"), org.jooq.impl.SQLDataType.VARCHAR(20).nullable(false).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
-    public final TableField<Record, String> ROLE = createField(DSL.name("role"), org.jooq.impl.SQLDataType.VARCHAR(20), this, "");
+    public final TableField<Record, String> PASSWORD = createField(DSL.name("password"), org.jooq.impl.SQLDataType.VARCHAR(200).nullable(false).defaultValue(org.jooq.impl.DSL.field("''::character varying", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     public User() {
         this(DSL.name("user"), null);
@@ -72,6 +73,11 @@ public class User extends TableImpl<Record> {
     @Override
     public Schema getSchema() {
         return Public.PUBLIC;
+    }
+
+    @Override
+    public Identity<Record, Long> getIdentity() {
+        return Internal.createIdentity(User.USER, User.USER.ID);
     }
 
     @Override

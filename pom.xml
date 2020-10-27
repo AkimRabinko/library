@@ -89,7 +89,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<skip>true</skip>
+					<skip>false</skip>
 					<jdbc>
 						<driver>${datasource.driver}</driver>
 						<url>${datasource.url}</url>

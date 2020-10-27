@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.jooq.Field;
+import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Schema;
@@ -25,7 +26,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Book extends TableImpl<Record> {
 
-    private static final long serialVersionUID = 1368334986;
+    private static final long serialVersionUID = 1793400251;
 
     public static final Book BOOK = new Book();
 
@@ -34,7 +35,7 @@ public class Book extends TableImpl<Record> {
         return Record.class;
     }
 
-    public final TableField<Record, Long> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
+    public final TableField<Record, Long> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.BIGINT.nullable(false).identity(true), this, "");
 
     public final TableField<Record, String> ISBN = createField(DSL.name("isbn"), org.jooq.impl.SQLDataType.VARCHAR(200).nullable(false), this, "");
 
@@ -75,6 +76,11 @@ public class Book extends TableImpl<Record> {
     @Override
     public Schema getSchema() {
         return Public.PUBLIC;
+    }
+
+    @Override
+    public Identity<Record, Long> getIdentity() {
+        return Internal.createIdentity(Book.BOOK, Book.BOOK.ID);
     }
 
     @Override

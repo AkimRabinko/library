@@ -22,10 +22,10 @@ public class BookDto {
                    @JsonProperty("author") String author,
                    @JsonProperty("name") String name,
                    @JsonProperty("language") String language,
-                   @JsonProperty("pagesCount") int pagesCount,
-                   @JsonProperty("yearPublished") int yearPublished,
-                   @JsonProperty("publishingHouse") String publishingHouse,
-                   @JsonProperty("shortInfo") String shortInfo) {
+                   @JsonProperty("pages_count") int pagesCount,
+                   @JsonProperty("year_published") int yearPublished,
+                   @JsonProperty("publishing_house") String publishingHouse,
+                   @JsonProperty("short_info") String shortInfo) {
         this.isbn = isbn;
         this.author = author;
         this.name = name;

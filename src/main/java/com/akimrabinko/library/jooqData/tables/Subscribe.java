@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.jooq.Field;
+import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Schema;
@@ -26,7 +27,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Subscribe extends TableImpl<Record> {
 
-    private static final long serialVersionUID = -414884813;
+    private static final long serialVersionUID = 2071239408;
 
     public static final Subscribe SUBSCRIBE = new Subscribe();
 
@@ -35,7 +36,7 @@ public class Subscribe extends TableImpl<Record> {
         return Record.class;
     }
 
-    public final TableField<Record, Long> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
+    public final TableField<Record, Long> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.BIGINT.nullable(false).identity(true), this, "");
 
     public final TableField<Record, Integer> USER_ID = createField(DSL.name("user_id"), org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
 
@@ -68,6 +69,11 @@ public class Subscribe extends TableImpl<Record> {
     @Override
     public Schema getSchema() {
         return Public.PUBLIC;
+    }
+
+    @Override
+    public Identity<Record, Long> getIdentity() {
+        return Internal.createIdentity(Subscribe.SUBSCRIBE, Subscribe.SUBSCRIBE.ID);
     }
 
     @Override

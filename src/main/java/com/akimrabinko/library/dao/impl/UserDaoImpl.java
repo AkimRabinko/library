@@ -19,7 +19,7 @@ public class UserDaoImpl implements UserDao {
     public User getUserById(long id) {
         return dslContext.select()
                 .from(USER)
-                .where(USER.ID.eq((int) id))
+                .where(USER.ID.eq(id))
                 .fetchSingle(recordMapper -> new User(
                         recordMapper.get(USER.ID),
                         recordMapper.get(USER.NAME),
