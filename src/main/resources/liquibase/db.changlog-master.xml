@@ -64,7 +64,7 @@
             <column name="user_id" type="integer">
                 <constraints nullable="false"/>
             </column>
-            <column name="book_ids" type="bigint[]">
+            <column name="book_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="period_start" type="date">
@@ -74,5 +74,9 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+    </changeSet>
+
+    <changeSet id="Change user id subscribe data type" author="Akim">
+        <modifyDataType tableName="subscribe" columnName="user_id" newDataType="bigint"/>
     </changeSet>
 </databaseChangeLog>

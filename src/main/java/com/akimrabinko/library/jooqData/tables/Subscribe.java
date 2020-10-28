@@ -27,7 +27,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Subscribe extends TableImpl<Record> {
 
-    private static final long serialVersionUID = 2071239408;
+    private static final long serialVersionUID = -1327286280;
 
     public static final Subscribe SUBSCRIBE = new Subscribe();
 
@@ -38,9 +38,9 @@ public class Subscribe extends TableImpl<Record> {
 
     public final TableField<Record, Long> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.BIGINT.nullable(false).identity(true), this, "");
 
-    public final TableField<Record, Integer> USER_ID = createField(DSL.name("user_id"), org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<Record, Long> USER_ID = createField(DSL.name("user_id"), org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
 
-    public final TableField<Record, Long[]> BOOK_IDS = createField(DSL.name("book_ids"), org.jooq.impl.SQLDataType.BIGINT.getArrayDataType(), this, "");
+    public final TableField<Record, Long> BOOK_ID = createField(DSL.name("book_id"), org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
 
     public final TableField<Record, LocalDate> PERIOD_START = createField(DSL.name("period_start"), org.jooq.impl.SQLDataType.LOCALDATE.nullable(false), this, "");
 

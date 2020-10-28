@@ -13,8 +13,8 @@ public class Period {
 
     @JsonCreator
 
-    public Period(@JsonProperty("periodStart") LocalDate periodStart,
-                  @JsonProperty("periodEnd") LocalDate periodEnd) {
+    public Period(@JsonProperty("period_start") LocalDate periodStart,
+                  @JsonProperty("period_end") LocalDate periodEnd) {
         this.periodStart = periodStart;
         this.periodEnd = periodEnd;
     }
