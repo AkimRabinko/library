@@ -5,6 +5,7 @@ package com.akimrabinko.library.jooqData;
 
 
 import com.akimrabinko.library.jooqData.tables.Book;
+import com.akimrabinko.library.jooqData.tables.Genre;
 import com.akimrabinko.library.jooqData.tables.Subscribe;
 import com.akimrabinko.library.jooqData.tables.User;
 
@@ -19,7 +20,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = -1541977440;
+    private static final long serialVersionUID = 805694629;
 
     public static final Public PUBLIC = new Public();
 
@@ -37,6 +38,7 @@ public class Public extends SchemaImpl {
     public final List<Table<?>> getTables() {
         return Arrays.<Table<?>>asList(
             Book.BOOK,
+            Genre.GENRE,
             Subscribe.SUBSCRIBE,
             User.USER);
     }
