@@ -26,7 +26,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Book extends TableImpl<Record> {
 
-    private static final long serialVersionUID = 1793400251;
+    private static final long serialVersionUID = 1340467922;
 
     public static final Book BOOK = new Book();
 
@@ -52,6 +52,8 @@ public class Book extends TableImpl<Record> {
     public final TableField<Record, String> PUBLISHING_HOUSE = createField(DSL.name("publishing_house"), org.jooq.impl.SQLDataType.VARCHAR(200).nullable(false), this, "");
 
     public final TableField<Record, String> SHORT_INFO = createField(DSL.name("short_info"), org.jooq.impl.SQLDataType.CLOB.nullable(false), this, "");
+
+    public final TableField<Record, String> GENRE = createField(DSL.name("genre"), org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     public Book() {
         this(DSL.name("book"), null);

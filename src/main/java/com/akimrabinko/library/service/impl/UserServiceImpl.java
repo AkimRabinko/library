@@ -3,6 +3,7 @@ package com.akimrabinko.library.service.impl;
 import com.akimrabinko.library.dao.UserDao;
 import com.akimrabinko.library.dto.UserDto;
 import com.akimrabinko.library.entity.User;
+import com.akimrabinko.library.service.PasswordEncoderService;
 import com.akimrabinko.library.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
+    private final PasswordEncoderService passwordEncoderService;
 
     @Override
     public User getUserById(long id) {
@@ -24,6 +26,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean createUser(UserDto userDto) {
-        return userDao.createUser(userDto);
+        UserDto userWithEncodedPassword = userDto.toBuilder()
+                .password(passwordEncoderService.encode(userDto.getPassword()))
+                .build();
+        return userDao.createUser(userWithEncodedPassword);
     }
 }

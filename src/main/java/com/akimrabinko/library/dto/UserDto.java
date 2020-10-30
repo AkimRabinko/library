@@ -3,11 +3,13 @@ package com.akimrabinko.library.dto;
 import com.akimrabinko.library.entity.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Value;
 
 import java.time.LocalDate;
 
 @Value
+@Builder(toBuilder = true)
 public class UserDto {
     String name;
     String surname;

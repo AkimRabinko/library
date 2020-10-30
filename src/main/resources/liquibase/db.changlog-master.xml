@@ -79,4 +79,57 @@
     <changeSet id="Change user id subscribe data type" author="Akim">
         <modifyDataType tableName="subscribe" columnName="user_id" newDataType="bigint"/>
     </changeSet>
+
+    <changeSet id="Add literary genres" author="Akim">
+        <createTable tableName="genre">
+            <column name="name" type="character varying(50)" />
+            <column name="description" type="text" />
+        </createTable>
+
+        <addColumn tableName="book">
+            <column name="genre" type="character varying(50)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="Fill genre" author="Akim">
+        <sql>
+            INSERT INTO genre (name, description) VALUES ('DRAMA',
+            'Stories composed in verse or prose, usually for theatrical performance, where conflicts and emotion are expressed through dialogue and action.');
+            INSERT INTO genre (name, description) VALUES ('FABLE',
+            'Narration demonstrating a useful truth, especially in which animals speak as humans; legendary, supernatural tale.');
+            INSERT INTO genre (name, description) VALUES ('FAIRY_TALE',
+            'Story about fairies or other magical creatures, usually for children.');
+            INSERT INTO genre (name, description) VALUES ('FANTASY',
+            'Fiction with strange or other worldly settings or characters; fiction which invites suspension of reality.');
+            INSERT INTO genre (name, description) VALUES ('FICTION',
+            'Narrative literary works whose content is produced by the imagination and is not necessarily based on fact.');
+            INSERT INTO genre (name, description) VALUES ('FICTION_IN_VERSE',
+            'Full-length novels with plot, subplot(s), theme(s), major and minor characters, in which the narrative is presented in (usually blank) verse form.');
+            INSERT INTO genre (name, description) VALUES ('FOLKLORE',
+            'The songs, stories, myths, and proverbs of a people or "folk" as handed down by word of mouth.');
+            INSERT INTO genre (name, description) VALUES ('HISTORICAL_FICTION',
+            'Story with fictional characters and events in a historical setting.');
+            INSERT INTO genre (name, description) VALUES ('HORROR',
+            'Fiction in which events evoke a feeling of dread in both the characters and the reader.');
+            INSERT INTO genre (name, description) VALUES ('HUMOR',
+            'Fiction full of fun, fancy, and excitement, meant to entertain; but can be contained in all genres.');
+            INSERT INTO genre (name, description) VALUES ('LEGEND',
+            'Story, sometimes of a national or folk hero, which has a basis in fact but also includes imaginative material.');
+            INSERT INTO genre (name, description) VALUES ('MYSTERY',
+            'Fiction dealing with the solution of a crime or the unraveling of secrets.');
+            INSERT INTO genre (name, description) VALUES ('MYTHOLOGY',
+            'Legend or traditional narrative, often based in part on historical events, that reveals human behavior and natural phenomena by its symbolism; often pertaining to the actions of the gods. ');
+            INSERT INTO genre (name, description) VALUES ('POETRY',
+            'Verse and rhythmic writing with imagery that creates emotional responses.');
+            INSERT INTO genre (name, description) VALUES ('REALISTIC_FICTION',
+            'Story that can actually happen and is true to life.');
+            INSERT INTO genre (name, description) VALUES ('SCIENCE_FICTION',
+            'Story based on impact of actual, imagined, or potential science, usually set in the future or on other planets.');
+            INSERT INTO genre (name, description) VALUES ('SHORT_STORY',
+            'Fiction of such brevity that it supports no subplots.');
+            INSERT INTO genre (name, description) VALUES ('TALL_TALE',
+            'Humorous story with blatant exaggerations, swaggering heroes who do the impossible with nonchalance.');
+            INSERT INTO genre (name, description) VALUES ('OTHER', '');
+        </sql>
+    </changeSet>
 </databaseChangeLog>
